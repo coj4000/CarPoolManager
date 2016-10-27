@@ -10,6 +10,7 @@ namespace Sandbox
         // This instance field will contain license plates as keys,
         // and Car objects as values
         Dictionary<String, Car> carList;
+        Car car1 = new Car("1234567", "Tesla", "S");
 
         public CarPool()
         {
@@ -19,22 +20,42 @@ namespace Sandbox
         // Add the given car to the car pool
         public void AddCarToPool(Car aCar)
         {
-            // Complete this method
+            carList.Add(car1.GetModel(), aCar);
         }
 
         // Remove the car with the given license plate from the car pool.
         // If the license plate does not exist, do nothing
         public void RemoveCarFromPool(String licensePlate)
         {
-            // Complete this method
+            foreach (var License in carList)
+            {
+                if (car1.GetLicensePlate() == licensePlate)
+                {
+                    carList.Remove(car1.GetModel());    
+                }
+                else
+                {
+                    Console.WriteLine("Sorry no car with that license plate");
+                }
+            }
         }
 
         // If a Car object corresponding to the given license plate exists, return it.
         // Otherwise, return null
         public Car LookupCar(String licensePlate)
         {
-            // Complete this method
-            return null;
+            Car result = null;
+            foreach (var Lice in carList)
+            {
+                
+                if (car1.GetLicensePlate() == licensePlate)
+                {
+                    result = Lice.Value;
+                }
+               
+            }
+            return result;
+           
         }
 
         // Print out all cars in the pool
